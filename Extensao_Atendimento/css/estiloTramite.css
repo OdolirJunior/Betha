@@ -1,0 +1,28 @@
+div{
+	color: #000080;
+	font-size: 13px;
+	text-align: left;
+	
+	height: 100px;
+	width: 350px;
+}
+
+.but {
+display: inline-block;
+background-color: #ccc;
+color: #00008B;
+padding: 5px 10px;
+text-decoration: none;
+box-sizing: border-box;
+font-family: Helvetica, Arial, sans-serif;
+font-size: 14px;
+border: 0px;
+}
+
+.but:hover{
+	text-decoration:underline;
+	font-weight: bold;
+	background: #ccc; 
+	color: #E2144A;
+	border: 2px;
+}
