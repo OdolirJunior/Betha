@@ -34,7 +34,7 @@
             }
         }
 
-        function onSaveSuccess (result) {
+        function onSaveSuccess () {
             $scope.$emit('projectBethaApp:ordemDeServicoUpdate', result);
             $uibModalInstance.close(result);
             vm.isSaving = false;

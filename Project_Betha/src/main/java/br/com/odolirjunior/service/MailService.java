@@ -4,6 +4,7 @@ import br.com.odolirjunior.domain.User;
 
 import io.github.jhipster.config.JHipsterProperties;
 
+import io.swagger.annotations.Scope;
 import org.apache.commons.lang3.CharEncoding;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,14 +12,12 @@ import org.springframework.context.MessageSource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.context.Context;
 import org.thymeleaf.spring4.SpringTemplateEngine;
-
 import javax.mail.internet.MimeMessage;
 import java.util.Locale;
-import java.net.Authenticator;
-import org.apache.commons.*;
 /**
  * Service for sending emails.
  * <p>

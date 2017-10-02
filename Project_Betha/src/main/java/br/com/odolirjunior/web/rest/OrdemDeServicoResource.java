@@ -1,5 +1,7 @@
 package br.com.odolirjunior.web.rest;
 
+import br.com.odolirjunior.service.MailService;
+import br.com.odolirjunior.service.TemplateEmailUtil;
 import com.codahale.metrics.annotation.Timed;
 import br.com.odolirjunior.domain.OrdemDeServico;
 
@@ -24,8 +26,6 @@ import java.net.URISyntaxException;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 import static org.elasticsearch.index.query.QueryBuilders.*;
 
@@ -44,9 +44,12 @@ public class OrdemDeServicoResource {
 
     private final OrdemDeServicoSearchRepository ordemDeServicoSearchRepository;
 
-    public OrdemDeServicoResource(OrdemDeServicoRepository ordemDeServicoRepository, OrdemDeServicoSearchRepository ordemDeServicoSearchRepository) {
+    private final MailService mailService;
+
+    public OrdemDeServicoResource(OrdemDeServicoRepository ordemDeServicoRepository, OrdemDeServicoSearchRepository ordemDeServicoSearchRepository, MailService mailService) {
         this.ordemDeServicoRepository = ordemDeServicoRepository;
         this.ordemDeServicoSearchRepository = ordemDeServicoSearchRepository;
+        this.mailService = mailService;
     }
 
     /**
@@ -69,6 +72,13 @@ public class OrdemDeServicoResource {
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
     }
+
+    @PostMapping("/ordem-de-servicos/enviar-mail")
+    public void enviarEmailOrdemFinalizada(@RequestBody OrdemDeServico ordemDeServico){
+        String content = TemplateEmailUtil.getEmailTemplateOrdemFinalizada("", "");
+        this.mailService.sendEmail(ordemDeServico.getCliente().getEmail(),"Teste",content,false,true);
+    }
+
 
     /**
      * PUT  /ordem-de-servicos : Updates an existing ordemDeServico.

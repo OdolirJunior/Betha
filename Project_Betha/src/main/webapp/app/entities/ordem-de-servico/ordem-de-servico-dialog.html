@@ -16,12 +16,11 @@
         <div class="form-group">
             <label class="control-label" for="field_nome">Nome</label>
             <input type="text" class="form-control" name="nome" id="field_nome"
-                    ng-model="vm.ordemDeServico.nome"
+                    ng-model="vm.ordemDeServico.nome" placeholder="Nome do equipamento"
                     required/>
             <div ng-show="editForm.nome.$invalid">
                 <p class="help-block"
                     ng-show="editForm.nome.$error.required">
-                    This field is required.
                 </p>
             </div>
         </div>
@@ -33,14 +32,13 @@
             <div ng-show="editForm.tipo.$invalid">
                 <p class="help-block"
                     ng-show="editForm.tipo.$error.required">
-                    This field is required.
                 </p>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label" for="field_marca">Marca</label>
             <input type="text" class="form-control" name="marca" id="field_marca"
-                    ng-model="vm.ordemDeServico.marca"
+                    ng-model="vm.ordemDeServico.marca" placeholder="Descrição detalhada do problema no equipamento"
                     required/>
             <div ng-show="editForm.marca.$invalid">
                 <p class="help-block"
@@ -56,14 +54,15 @@
             <div ng-show="editForm.problema.$invalid">
                 <p class="help-block"
                     ng-show="editForm.problema.$error.required">
-                    This field is required.
                 </p>
             </div>
         </div>
 
         <div class="form-group">
             <label class="control-label" for="field_status">Status</label>
-            <input type="text" value="AGUARDANDO ATENDIMENTO" class="form-control" id="field_status"  readonly/>
+            <select class="form-control" name="status" ng-model="vm.ordemDeServico.status" id="field_status" required>
+                <option value="AGUARDANDO_ATENDIMENTO">AGUARDANDO ATENDIMENTO</option>
+            </select>
         </div>
 
         <div class="form-group">
@@ -74,16 +73,16 @@
         <div ng-show="editForm.cliente.$invalid">
             <p class="help-block"
                 ng-show="editForm.cliente.$error.required">
-                This field is required.
+
             </p>
         </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
-            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancelar</span>
         </button>
         <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
-            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Salvar</span>
         </button>
     </div>
 </form>

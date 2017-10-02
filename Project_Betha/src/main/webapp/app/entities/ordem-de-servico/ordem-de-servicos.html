@@ -59,8 +59,8 @@
                         <a ui-sref="cliente-detail({id:ordemDeServico.cliente.id})">{{ordemDeServico.cliente.nome}}</a>
                     </td>
                     <td class="text-right">
-                        <div class="btn-group flex-btn-group-container">
-                            <button type="submit"
+                        <div class="btn-group flex-btn-group-container" >
+                            <button type="submit" ng-if="ordemDeServico.status !== 'FINALIZADO'"
                                     ui-sref="ordem-de-servico.atender({id:ordemDeServico.id})"
                                     class="btn btn-success btn-sm">
                                 <span class="glyphicon glyphicon-check"></span>
@@ -72,13 +72,13 @@
                                 <span class="glyphicon glyphicon-eye-open"></span>
                                 <span class="hidden-sm-down"></span>
                             </button>
-                            <button type="submit"
+                            <button type="submit" ng-if="ordemDeServico.status !== 'FINALIZADO'"
                                     ui-sref="ordem-de-servico.edit({id:ordemDeServico.id})"
                                     class="btn btn-primary btn-sm">
                                 <span class="glyphicon glyphicon-pencil"></span>
                                 <span class="hidden-sm-down"></span>
                             </button>
-                            <button type="submit"
+                            <button type="submit" ng-if="ordemDeServico.status !== 'FINALIZADO'"
                                     ui-sref="ordem-de-servico.delete({id:ordemDeServico.id})"
                                     class="btn btn-danger btn-sm">
                                 <span class="glyphicon glyphicon-remove-circle"></span>

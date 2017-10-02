@@ -53,7 +53,7 @@
         <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
     </button>
 
-    <button type="button" ui-sref="ordem-de-servico-detail.edit({id:vm.ordemDeServico.id})" class="btn btn-primary">
+    <button type="button" ui-sref="ordem-de-servico-detail.edit({id:vm.ordemDeServico.id}) " class="btn btn-primary" ng-disabled="vm.ordemDeServico.status === 'FINALIZADO'">
         <span class="glyphicon glyphicon-pencil"></span>
         <span class="hidden-sm-down"> Edit</span>
     </button>

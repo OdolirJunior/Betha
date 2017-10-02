@@ -9,7 +9,7 @@
             </button>
             <a class="navbar-brand logo" href="#/" ng-click="vm.collapseNavbar()">
                 <img class="logo-img" src="content/images/logo-jhipster.png" alt="logo"/>
-                <span>Project_Betha</span> <span class="navbar-version">v{{VERSION}}</span>
+                <span>Project_Betha</span>
             </a>
         </div>
         <div class="navbar-collapse" uib-collapse="vm.isNavbarCollapsed" ng-switch="vm.isAuthenticated()">
@@ -52,7 +52,7 @@
                         <span>
                             <span class="glyphicon glyphicon-user"></span>
                             <span class="hidden-sm">
-                                Account
+                                Acesso
                             </span>
                             <b class="caret"></b>
                         </span>
@@ -79,13 +79,13 @@
                         <li ui-sref-active="active" ng-switch-when="false">
                             <a href="" ng-click="vm.login()" id="login">
                                 <span class="glyphicon glyphicon-log-in"></span>&nbsp;
-                                <span>Sign in</span>
+                                <span>Login</span>
                             </a>
                         </li>
                         <li ui-sref-active="active" ng-switch-when="false">
                             <a ui-sref="register" ng-click="vm.collapseNavbar()">
                                 <span class="glyphicon glyphicon-plus-sign"></span>&nbsp;
-                                <span>Register</span>
+                                <span>Registre-se</span>
                             </a>
                         </li>
                     </ul>
