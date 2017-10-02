@@ -1,0 +1,88 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myOrdemDeServicoLabel">Criar ou Editar Ordem De Servico</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.ordemDeServico.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.ordemDeServico.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_nome">Nome</label>
+            <input type="text" class="form-control" name="nome" id="field_nome"
+                    ng-model="vm.ordemDeServico.nome" placeholder="Nome do equipamento"
+                    required/>
+            <div ng-show="editForm.nome.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.nome.$error.required">
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_tipo">Tipo</label>
+            <input type="text" class="form-control" name="tipo" id="field_tipo"
+                    ng-model="vm.ordemDeServico.tipo"
+                    required/>
+            <div ng-show="editForm.tipo.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.tipo.$error.required">
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_marca">Marca</label>
+            <input type="text" class="form-control" name="marca" id="field_marca"
+                    ng-model="vm.ordemDeServico.marca" placeholder="Descrição detalhada do problema no equipamento"
+                    required/>
+            <div ng-show="editForm.marca.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.marca.$error.required">
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_problema">Problema</label>
+            <input type="text" class="form-control" name="problema" id="field_problema"
+                    ng-model="vm.ordemDeServico.problema"
+                    required/>
+            <div ng-show="editForm.problema.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.problema.$error.required">
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" for="field_status">Status</label>
+            <select class="form-control" name="status" ng-model="vm.ordemDeServico.status" id="field_status" required>
+                <option value="AGUARDANDO_ATENDIMENTO">AGUARDANDO ATENDIMENTO</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="field_cliente">Cliente</label>
+            <select class="form-control" id="field_cliente" name="cliente" ng-model="vm.ordemDeServico.cliente" ng-options="cliente as cliente.nome for cliente in vm.clientes track by cliente.id" required>
+            </select>
+        </div>
+        <div ng-show="editForm.cliente.$invalid">
+            <p class="help-block"
+                ng-show="editForm.cliente.$error.required">
+
+            </p>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancelar</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Salvar</span>
+        </button>
+    </div>
+</form>

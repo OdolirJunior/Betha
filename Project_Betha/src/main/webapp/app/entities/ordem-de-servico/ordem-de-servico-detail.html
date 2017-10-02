@@ -1,0 +1,60 @@
+
+<div>
+    <h2><span>Ordem De Servico</span> {{vm.ordemDeServico.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Nome</span></dt>
+        <dd>
+            <span>{{vm.ordemDeServico.nome}}</span>
+        </dd>
+        <dt><span>Tipo</span></dt>
+        <dd>
+            <span>{{vm.ordemDeServico.tipo}}</span>
+        </dd>
+        <dt><span>Marca</span></dt>
+        <dd>
+            <span>{{vm.ordemDeServico.marca}}</span>
+        </dd>
+        <dt><span>Problema</span></dt>
+        <dd>
+            <span>{{vm.ordemDeServico.problema}}</span>
+        </dd>
+        <dt><span>Avaria</span></dt>
+        <dd>
+            <span>{{vm.ordemDeServico.avaria}}</span>
+        </dd>
+        <dt><span>Foto</span></dt>
+        <dd>
+            <div ng-if="vm.ordemDeServico.foto">
+                <a ng-click="vm.openFile(vm.ordemDeServico.fotoContentType, vm.ordemDeServico.foto)">
+                    <img data-ng-src="{{'data:' + vm.ordemDeServico.fotoContentType + ';base64,' + vm.ordemDeServico.foto}}" style="max-width: 100%;" alt="ordemDeServico image"/>
+                </a>
+                {{vm.ordemDeServico.fotoContentType}}, {{vm.byteSize(vm.ordemDeServico.foto)}}
+            </div>
+        </dd>
+        <dt><span>Status</span></dt>
+        <dd>
+            <span>{{vm.ordemDeServico.status}}</span>
+        </dd>
+        <dt><span>Tecnico</span></dt>
+        <dd>
+            <span>{{vm.ordemDeServico.tecnico}}</span>
+        </dd>
+        <dt><span>Cliente</span></dt>
+        <dd>
+            <a ui-sref="cliente-detail({id:vm.ordemDeServico.cliente.id})">{{vm.ordemDeServico.cliente.nome}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="ordem-de-servico-detail.edit({id:vm.ordemDeServico.id}) " class="btn btn-primary" ng-disabled="vm.ordemDeServico.status === 'FINALIZADO'">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>
